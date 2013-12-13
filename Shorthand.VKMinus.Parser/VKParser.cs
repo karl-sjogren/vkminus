@@ -13,7 +13,7 @@ namespace Shorthand.VKMinus.Parser
 {
     public static class VKParser
     {
-        private static string[] _blacklist = { "http://www.vk.se/1012028/vk-fritt-for-alla-prenumeranter", "http://www.vk.se/1027884/sa-delar-du-vk" };
+        private static readonly string[] Blacklist = { "http://www.vk.se/1012028/vk-fritt-for-alla-prenumeranter", "http://www.vk.se/1027884/sa-delar-du-vk" };
         public static StartpageData ParseStartpage()
         {
             var wc = new WebClient();
@@ -21,8 +21,7 @@ namespace Shorthand.VKMinus.Parser
             var doc = new HtmlDocument();
             doc.LoadHtml(html);
 
-            var data = new StartpageData();
-
+            var blockData = new List<BlockData>();
             var links = new List<string>();
             var latestNewsLinks = new List<string>();
             var mainNewsLinks = new List<string>();
@@ -45,26 +44,42 @@ namespace Shorthand.VKMinus.Parser
                 if (!attr.StartsWith("http://www.vk.se/"))
                     continue;
 
-                if (_blacklist.Contains(attr))
+                if (Blacklist.Contains(attr))
                     continue;
 
                 if (IsLatestNewsNode(link))
                 {
                     if (!latestNewsLinks.Contains(attr))
-                    { 
+                    {
                         latestNewsLinks.Add(attr);
                     }
                 }
                 else if (IsMainColumnNode(link))
                 {
                     if (!mainNewsLinks.Contains(attr))
+                    {
                         mainNewsLinks.Add(attr);
+
+                        var blockNr = GetBlockNumber(link);
+                        var block = blockData.FirstOrDefault(b => b.BlockNr == blockNr);
+
+                        if (block == null)
+                        {
+                            block = new BlockData { BlockNr = blockNr };
+                            blockData.Add(block);
+                        }
+
+                        block.TotalLinks++;
+                        if (attr.StartsWith("http://www.vk.se/plus/"))
+                            block.TotalPlusLinks++;
+                    }
                 }
                 else
                     if (!links.Contains(attr))
                         links.Add(attr);
             }
 
+            var data = new StartpageData();
             data.TotalLinks = latestNewsLinks.Count + links.Count + mainNewsLinks.Count;
             data.TotalLatestNewsLinks = latestNewsLinks.Count;
             data.TotalMainLinks = mainNewsLinks.Count;
@@ -75,8 +90,6 @@ namespace Shorthand.VKMinus.Parser
                 {
                     data.TotalPlusLinks++;
                 }
-
-                Console.WriteLine(link);
             }
 
             foreach (var link in latestNewsLinks)
@@ -97,6 +110,7 @@ namespace Shorthand.VKMinus.Parser
                 }
             }
 
+            data.Blocks.AddRange(blockData);
             return data;
         }
 
@@ -129,7 +143,7 @@ namespace Shorthand.VKMinus.Parser
             }
             return false;
         }
-        
+
         public static Regex BlockNumbeRegex = new Regex("block-(?<nr>\\d)", RegexOptions.CultureInvariant | RegexOptions.Compiled);
         private static Int32 GetBlockNumber(HtmlNode node)
         {
@@ -138,7 +152,8 @@ namespace Shorthand.VKMinus.Parser
             {
                 if (n.Attributes["class"] != null)
                 {
-                    if (n.Attributes["class"].Value.Contains("block-")) {
+                    if (n.Attributes["class"].Value.Contains("block-"))
+                    {
                         var attr = n.Attributes["class"].Value;
                         var match = BlockNumbeRegex.Match(attr);
                         if (!match.Success)

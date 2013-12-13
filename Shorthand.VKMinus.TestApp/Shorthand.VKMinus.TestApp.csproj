@@ -56,6 +56,10 @@
       <Project>{ff14c7de-c6cc-4ab1-9f40-db9d1c2b41fe}</Project>
       <Name>Shorthand.VKMinus.Parser</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Shorthand.VKMinus.Utilities\Shorthand.VKMinus.Utilities.csproj">
+      <Project>{4A85817B-7B47-4554-8C24-435C0EC62DE1}</Project>
+      <Name>Shorthand.VKMinus.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

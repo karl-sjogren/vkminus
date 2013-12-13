@@ -3,6 +3,7 @@
 
 # VKMinus-specific files
 connection.xml
+ServiceInstance
 
 # User-specific files
 *.suo
