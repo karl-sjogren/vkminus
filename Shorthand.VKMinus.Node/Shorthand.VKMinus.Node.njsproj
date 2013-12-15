@@ -38,8 +38,8 @@
     <Compile Include="public\javascripts\Chart.min.js" />
     <Compile Include="public\javascripts\jquery.onepage-scroll.min.js" />
     <Compile Include="public\javascripts\main.js" />
+    <Compile Include="public\javascripts\modernizr.js" />
     <Compile Include="routes\index.js" />
-    <Compile Include="routes\user.js" />
     <Content Include="package.json" />
     <Content Include="public\stylesheets\normalize.css" />
     <Content Include="public\stylesheets\onepage-scroll.css" />

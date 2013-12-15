@@ -54,19 +54,24 @@ function renderChart(id, count) {
 }
 
 (function() {
-    $(".main").onepage_scroll({
-        sectionContainer: "section",
-        easing: "ease", // Easing options accepts the CSS3 easing animation such "ease", "linear", "ease-in", "ease-out", "ease-in-out", or even cubic bezier value such as "cubic-bezier(0.175, 0.885, 0.420, 1.310)"
-        animationTime: 1000,
-        pagination: true,
-        updateURL: false,
-        loop: false,
-        afterMove: function(idx) {
-            if (idx === 1) {
-                renderChart("dailyAverage", 10);
-            } else if (idx === 3) {
-                renderChart("mainAverage", 30);
+    if (Modernizr.mq('only all and (min-width: 1200px)')) {
+        $(".main").onepage_scroll({
+            sectionContainer: "section",
+            easing: "ease", // Easing options accepts the CSS3 easing animation such "ease", "linear", "ease-in", "ease-out", "ease-in-out", or even cubic bezier value such as "cubic-bezier(0.175, 0.885, 0.420, 1.310)"
+            animationTime: 1000,
+            pagination: true,
+            updateURL: false,
+            loop: false,
+            afterMove: function(idx) {
+                if (idx === 1) {
+                    renderChart("dailyAverage", 10);
+                } else if (idx === 3) {
+                    renderChart("mainAverage", 30);
+                }
             }
-        }
-    });
+        });
+    } else {
+        renderChart("dailyAverage", 10);
+        renderChart("mainAverage", 10);
+    }
 })();

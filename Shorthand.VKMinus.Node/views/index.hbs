@@ -4,23 +4,24 @@
 			<div class="cell">
 				<div class="singlecolumn">
 					<h1>{{title}}</h1>
-					<p>I oktober 2013 införde Västerbottens-Kuriren en betalvägg på sin webbplats <a href="http://www.vk.se/" title="Västerbottens-Kuriren">http://www.vk.se/</a>.</p>
+					<p>I oktober 2013 införde Västerbottens-Kuriren en betalvägg på sin webbplats <a href="http://www.vk.se/" title="Västerbottens-Kuriren">www.vk.se</a>.</p>
 					<p>Helt plötsligt så verkade nästan alla artiklar på webbplatsen vara otilgängliga för alla som inte var prenumeranter. Det tog inte lång tid innan <a href="http://www.vk.se/1012028/vk-fritt-for-alla-prenumeranter#disqus_thread" title="Kommentarer om VKPlus">kommentarsfälten</a> började fyllas med folk som var missnöjda på olika sätt.</p>
-					<p>Frågan är däremot hur mycket som verkligen hamnade bakom betalväggen. Besöker man <a href="http://www.vk.se/" title="Västerbottens-Kuriren">http://www.vk.se/</a> så får man känslan att det är en väldigt stor andel men vad säger faktiskta siffror?</p>
+					<p>Frågan är däremot hur mycket som verkligen hamnade bakom betalväggen. Besöker man <a href="http://www.vk.se/" title="Västerbottens-Kuriren">www.vk.se</a> så får man känslan att det är en väldigt stor andel men vad säger faktiskta siffror?</p>
 				</div>
             </div>
+			<div id="lastUpdated">Senast uppdaterad {{lastUpdated}}</div>
         </section>
         <section>
 			<div class="cell">
 				<div class="twocolumn">
 					<div class="first"><span class="bigNumber">{{percentage}}%</span></div>
 					<div class="second">
-						<p>Så enkelt är det, <span class="number">{{percentage}}%</span> av artiklarna på <a href="http://www.vk.se/" title="Västerbottens-Kuriren">http://www.vk.se/</a> kräver VKPlus just nu.</p>
+						<p>Så enkelt är det, <span class="number">{{percentage}}%</span> av artiklarna på <a href="http://www.vk.se/" title="Västerbottens-Kuriren">www.vk.se</a> kräver VKPlus just nu.</p>
 						<p>Det låter inte så farligt, eller hur?</p>
 					</div>
 				</div>
 				<div class="twocolumn">
-					<div class="first"><canvas id="dailyAverage" height="200" width="350" data-values="{{totalChart.values}}" data-labels="{{totalChart.labels}}"></canvas></div>
+					<div class="first"><canvas id="dailyAverage" data-values="{{totalChart.values}}" data-labels="{{totalChart.labels}}"></canvas></div>
 					<div class="second">
 						<p>Sett över lite tid så är variationen inte så himla stor heller.</p>
 					</div>
@@ -32,9 +33,9 @@
 				<div class="singlecolumn">
 					<h2>Stämmer det?</h2>
 					<p>Ja det stämmer, men det finns en del andra faktorer som man bör ta med också.</p>
-					<p><a href="http://www.vk.se/" title="Västerbottens-Kuriren">http://www.vk.se/</a> är uppbyggt i ett antal större block som skiljs åt av reklambanners. Varje block är i sin tur uppdelat i två kolumner, en bredare och en smalare.</p>
+					<p><a href="http://www.vk.se/" title="Västerbottens-Kuriren">www.vk.se</a> är uppbyggt i ett antal större block som skiljs åt av reklambanners. Varje block är i sin tur uppdelat i två kolumner, en bredare och en smalare.</p>
 					<p>Den bredare kolumnen innehåller nyheter och artiklar medan den smalare har ett fåtal nyheter och artiklar, reklam, Köpt och Sälj och andra listor (t.ex. bloggar, applåden, Karriär i Norr, Mest läst idag).</p>
-					<p>Siffran <span class="number">{{percentage}}%</span> baseras på alla nyheter och artiklar som finns länkade på startsidan för <a href="http://www.vk.se/" title="Västerbottens-Kuriren">http://www.vk.se/</a>. Tittar man istället på hur det ser ut per block så blir siffrorna väldigt annorlunda.</p>
+					<p>Siffran <span class="number">{{percentage}}%</span> baseras på alla nyheter och artiklar som finns länkade på startsidan för <a href="http://www.vk.se/" title="Västerbottens-Kuriren">www.vk.se</a>. Tittar man istället på hur det ser ut per block så blir siffrorna väldigt annorlunda.</p>
 				</div>
             </div>
         </section>
@@ -50,7 +51,7 @@
                     </div>
                 </div>
                 <div class="singlecolumn">
-                    <canvas id="mainAverage" height="200" width="700" data-values="{{mainChart.values}}" data-labels="{{mainChart.labels}}"></canvas>
+                    <canvas id="mainAverage" width="500" data-values="{{mainChart.values}}" data-labels="{{mainChart.labels}}"></canvas>
                 </div>
             </div>
         </section>
@@ -58,7 +59,7 @@
 			<div class="cell">
 				<div class="singlecolumn">
 					<h3>De första tre blocken</h3>
-					<p>Nedan är en sammanställning av pluslänkar i de första tre blocken på <a href="http://www.vk.se/" title="Västerbottens-Kuriren">http://www.vk.se/</a>.</p>
+					<p>Nedan är en sammanställning av pluslänkar i de första tre blocken på <a href="http://www.vk.se/" title="Västerbottens-Kuriren">www.vk.se</a>.</p>
 				</div>
 				<div class="twocolumn">
 					<div class="first"><span class="middleNumber">{{block0.percentage}}%</span></div>
@@ -126,7 +127,7 @@
 			<div class="cell">
 				<div class="singlecolumn">
 					<h3>De sista tre blocken</h3>
-					<p>Nedan är en sammanställning av pluslänkar i de sista tre blocken på <a href="http://www.vk.se/" title="Västerbottens-Kuriren">http://www.vk.se/</a>.</p>
+					<p>Nedan är en sammanställning av pluslänkar i de sista tre blocken på <a href="http://www.vk.se/" title="Västerbottens-Kuriren">www.vk.se</a>.</p>
 				</div>
 				<div class="twocolumn">
 					<div class="first"><span class="middleNumber">{{block3.percentage}}%</span></div>
@@ -210,6 +211,5 @@
 				</div>
             </div>
         </section>
-		<div id="lastUpdated">Senast uppdaterad {{lastUpdated}}</div>
 	</div>
 {{>footer}}
