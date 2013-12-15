@@ -42,7 +42,7 @@ namespace Shorthand.VKMinus.TestApp
             new Repository("testdata").Save(data);
 
             var repo = new Repository();
-            var stats = repo.GetByDate(DateTime.Today.AddDays(-1));
+            var stats = repo.GetStartPageDataByDate(DateTime.Today.AddDays(-1));
 
             var summary = new DailySummary();
             summary.ForDate = DateTime.Today;

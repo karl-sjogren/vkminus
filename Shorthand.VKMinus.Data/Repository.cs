@@ -47,12 +47,21 @@ namespace Shorthand.VKMinus.Data
                 });
                 BsonClassMap.RegisterClassMap<BlockData>();
 
-
                 BsonClassMap.RegisterClassMap<DailySummary>(cm =>
                 {
                     cm.AutoMap();
                     cm.SetIdMember(cm.GetMemberMap(c => c.Id));
+                    cm.GetMemberMap(c => c.ForDate).SetSerializationOptions(new DateTimeSerializationOptions { Kind = DateTimeKind.Local });
                     cm.GetMemberMap(c => c.CreatedAt).SetSerializationOptions(new DateTimeSerializationOptions { Kind = DateTimeKind.Local });
+                    cm.SetIgnoreExtraElements(true);
+                });
+                BsonClassMap.RegisterClassMap<BlockDataSummary>();
+
+                BsonClassMap.RegisterClassMap<DailyLinkCollection>(cm =>
+                {
+                    cm.AutoMap();
+                    cm.SetIdMember(cm.GetMemberMap(c => c.Id));
+                    cm.GetMemberMap(c => c.ForDate).SetSerializationOptions(new DateTimeSerializationOptions { Kind = DateTimeKind.Local });
                     cm.SetIgnoreExtraElements(true);
                 });
             }
@@ -75,7 +84,16 @@ namespace Shorthand.VKMinus.Data
             coll.Insert(data);
         }
 
-        public List<StartpageData> GetByDate(DateTime date) {
+        public void Save(DailyLinkCollection data)
+        {
+            var client = new MongoClient(ConnectionString);
+            var server = client.GetServer();
+            var db = server.GetDatabase("vkminus");
+            var coll = db.GetCollection(_collection);
+            coll.Insert(data);
+        }
+
+        public List<StartpageData> GetStartPageDataByDate(DateTime date) {
             var client = new MongoClient(ConnectionString);
             var server = client.GetServer();
             var db = server.GetDatabase("vkminus");
@@ -83,6 +101,17 @@ namespace Shorthand.VKMinus.Data
             coll.FindAs<StartpageData>(new QueryDocument());
             var items = coll.AsQueryable<StartpageData>().Where(o => o.CreatedAt >= date && o.CreatedAt < date.AddDays(1)).ToList();
             return items;
+        }
+
+        public DailyLinkCollection GetDailyLinkCollection(DateTime date)
+        {
+            var client = new MongoClient(ConnectionString);
+            var server = client.GetServer();
+            var db = server.GetDatabase("vkminus");
+            var coll = db.GetCollection(_collection);
+            coll.FindAs<StartpageData>(new QueryDocument());
+            var item = coll.AsQueryable<DailyLinkCollection>().FirstOrDefault(o => o.ForDate >= date && o.ForDate < date.AddDays(1));
+            return item;
         }
     }
 }
