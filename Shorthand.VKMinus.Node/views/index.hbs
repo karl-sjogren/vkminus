@@ -1,0 +1,215 @@
+﻿{{>header}}
+	<div class="main">
+        <section>
+			<div class="cell">
+				<div class="singlecolumn">
+					<h1>{{title}}</h1>
+					<p>I oktober 2013 införde Västerbottens-Kuriren en betalvägg på sin webbplats <a href="http://www.vk.se/" title="Västerbottens-Kuriren">http://www.vk.se/</a>.</p>
+					<p>Helt plötsligt så verkade nästan alla artiklar på webbplatsen vara otilgängliga för alla som inte var prenumeranter. Det tog inte lång tid innan <a href="http://www.vk.se/1012028/vk-fritt-for-alla-prenumeranter#disqus_thread" title="Kommentarer om VKPlus">kommentarsfälten</a> började fyllas med folk som var missnöjda på olika sätt.</p>
+					<p>Frågan är däremot hur mycket som verkligen hamnade bakom betalväggen. Besöker man <a href="http://www.vk.se/" title="Västerbottens-Kuriren">http://www.vk.se/</a> så får man känslan att det är en väldigt stor andel men vad säger faktiskta siffror?</p>
+				</div>
+            </div>
+        </section>
+        <section>
+			<div class="cell">
+				<div class="twocolumn">
+					<div class="first"><span class="bigNumber">{{percentage}}%</span></div>
+					<div class="second">
+						<p>Så enkelt är det, <span class="number">{{percentage}}%</span> av artiklarna på <a href="http://www.vk.se/" title="Västerbottens-Kuriren">http://www.vk.se/</a> kräver VKPlus just nu.</p>
+						<p>Det låter inte så farligt, eller hur?</p>
+					</div>
+				</div>
+				<div class="twocolumn">
+					<div class="first"><canvas id="dailyAverage" height="200" width="350" data-values="{{totalChart.values}}" data-labels="{{totalChart.labels}}"></canvas></div>
+					<div class="second">
+						<p>Sett över lite tid så är variationen inte så himla stor heller.</p>
+					</div>
+				</div>
+            </div>
+        </section>
+        <section>
+			<div class="cell">
+				<div class="singlecolumn">
+					<h2>Stämmer det?</h2>
+					<p>Ja det stämmer, men det finns en del andra faktorer som man bör ta med också.</p>
+					<p><a href="http://www.vk.se/" title="Västerbottens-Kuriren">http://www.vk.se/</a> är uppbyggt i ett antal större block som skiljs åt av reklambanners. Varje block är i sin tur uppdelat i två kolumner, en bredare och en smalare.</p>
+					<p>Den bredare kolumnen innehåller nyheter och artiklar medan den smalare har ett fåtal nyheter och artiklar, reklam, Köpt och Sälj och andra listor (t.ex. bloggar, applåden, Karriär i Norr, Mest läst idag).</p>
+					<p>Siffran <span class="number">{{percentage}}%</span> baseras på alla nyheter och artiklar som finns länkade på startsidan för <a href="http://www.vk.se/" title="Västerbottens-Kuriren">http://www.vk.se/</a>. Tittar man istället på hur det ser ut per block så blir siffrorna väldigt annorlunda.</p>
+				</div>
+            </div>
+        </section>
+
+        <section>
+            <div class="cell">
+                <div class="twocolumn">
+                    <div class="first">
+                        <p>Väljer vi istället att endast titta på huvudkolumnen, dvs där alla större nyheter och artiklar publiceras, så blir siffran en annan.</p>
+                    </div>
+                    <div class="second">
+						<span class="bigNumber">{{latestMainPercentage}}%</span>
+                    </div>
+                </div>
+                <div class="singlecolumn">
+                    <canvas id="mainAverage" height="200" width="700" data-values="{{mainChart.values}}" data-labels="{{mainChart.labels}}"></canvas>
+                </div>
+            </div>
+        </section>
+        <section>
+			<div class="cell">
+				<div class="singlecolumn">
+					<h3>De första tre blocken</h3>
+					<p>Nedan är en sammanställning av pluslänkar i de första tre blocken på <a href="http://www.vk.se/" title="Västerbottens-Kuriren">http://www.vk.se/</a>.</p>
+				</div>
+				<div class="twocolumn">
+					<div class="first"><span class="middleNumber">{{block0.percentage}}%</span></div>
+					<div class="second">
+						<h4>Block 1</h4>
+						<table>
+							<tr>
+								<td>Länkar</td>
+								<td>{{block0.links}}</td>
+							</tr>
+							<tr>
+								<td>Pluslänkar</td>
+								<td>{{block0.pluslinks}}</td>
+							</tr>
+							<tr>
+								<td>Andel Plus-länkar</td>
+								<td><span class="number">{{block0.percentage}}%</span></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="twocolumn">
+					<div class="first"><span class="middleNumber">{{block1.percentage}}%</span></div>
+					<div class="second">
+						<h4>Block 2</h4>
+						<table>
+							<tr>
+								<td>Länkar</td>
+								<td>{{block1.links}}</td>
+							</tr>
+							<tr>
+								<td>Pluslänkar</td>
+								<td>{{block1.pluslinks}}</td>
+							</tr>
+							<tr>
+								<td>Andel Plus-länkar</td>
+								<td><span class="number">{{block1.percentage}}%</span></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="twocolumn">
+					<div class="first"><span class="middleNumber">{{block2.percentage}}%</span></div>
+					<div class="second">
+						<h4>Block 3</h4>
+						<table>
+							<tr>
+								<td>Länkar</td>
+								<td>{{block2.links}}</td>
+							</tr>
+							<tr>
+								<td>Pluslänkar</td>
+								<td>{{block2.pluslinks}}</td>
+							</tr>
+							<tr>
+								<td>Andel Plus-länkar</td>
+								<td><span class="number">{{block2.percentage}}%</span></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+            </div>
+        </section>
+        <section>
+			<div class="cell">
+				<div class="singlecolumn">
+					<h3>De sista tre blocken</h3>
+					<p>Nedan är en sammanställning av pluslänkar i de sista tre blocken på <a href="http://www.vk.se/" title="Västerbottens-Kuriren">http://www.vk.se/</a>.</p>
+				</div>
+				<div class="twocolumn">
+					<div class="first"><span class="middleNumber">{{block3.percentage}}%</span></div>
+					<div class="second">
+						<h4>Block 4</h4>
+						<table>
+							<tr>
+								<td>Länkar</td>
+								<td>{{block3.links}}</td>
+							</tr>
+							<tr>
+								<td>Pluslänkar</td>
+								<td>{{block3.pluslinks}}</td>
+							</tr>
+							<tr>
+								<td>Andel Plus-länkar</td>
+								<td><span class="number">{{block3.percentage}}%</span></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="twocolumn">
+					<div class="first"><span class="middleNumber">{{block4.percentage}}%</span></div>
+					<div class="second">
+						<h4>Block 5</h4>
+						<table>
+							<tr>
+								<td>Länkar</td>
+								<td>{{block4.links}}</td>
+							</tr>
+							<tr>
+								<td>Pluslänkar</td>
+								<td>{{block4.pluslinks}}</td>
+							</tr>
+							<tr>
+								<td>Andel Plus-länkar</td>
+								<td><span class="number">{{block4.percentage}}%</span></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="twocolumn">
+					<div class="first"><span class="middleNumber">{{block5.percentage}}%</span></div>
+					<div class="second">
+						<h4>Block 6</h4>
+						<table>
+							<tr>
+								<td>Länkar</td>
+								<td>{{block5.links}}</td>
+							</tr>
+							<tr>
+								<td>Pluslänkar</td>
+								<td>{{block5.pluslinks}}</td>
+							</tr>
+							<tr>
+								<td>Andel Plus-länkar</td>
+								<td><span class="number">{{block5.percentage}}%</span></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+            </div>
+        </section>
+        <section>
+			<div class="cell">
+				<div class="singlecolumn">
+					<h2>Om siten</h2>
+					<p>Hela idén kring {{title}} föddes när jag såg alla klagomålen på VK+ och hur upprörda folk var att så mycket innehåll numera inte var gratis. Efter att manuellt ha räknat andelen plus-länkar i början så kändes det som att det borde gå att automatisera någorlunda enkelt.</p>
+					<p>Projektet är uppbyggt i två delar, dels ett program som kontinuerligt ligger och bevakar vk.se för att skapa statistik över tid och dels webbplatsen som är den du besöker nu. Hela projektet finns tillgängligt på <a href="https://github.com/karl-sjogren/vkminus" title="VKMinus på GitHub">GitHub</a> för den som är intresserad av sånt och är fritt att använda för eget bruk.</p>
+					<p>Inloggningsuppgifter för databasen som används är exkluderad ur projektet men är någon intresserad av att analysera grundmaterialet så kan man kontakta mig på <a href="mailto:karl.sjogren@gmail.com?subject=Data från VK-">karl@shorthand.se</a>.</p>
+					<p>Webbplatsen har inget samarete med <a href="http://www.vk.se/" title="Västerbottens-Kuriren">Västerbottens-Kuriren</a> eller någon av deras samarbetspartners och använder cookies för att skapa besöksstatistik via Google Analytics.</p>
+				</div>
+            </div>
+        </section>
+        <section>
+			<div class="cell">
+				<div class="singlecolumn">
+					<h2>Framtida planer</h2>
+					<p>Detta projekt snickrades ihop på ungefär två dagars arbete och det finns gott om utrymme för förbättringar. Dels kommer mer och mer statistik att samlas in (när detta skrivs finns det bara statistik för en vecka) vilket ger goda möjligheter att ta fram bättre och intressantare siffror och dels så kan webbplatsen möjligtvis utvecklas till att även täcka in andra nyhetssiter.</p>
+					<p>För tillfället är siten oanvändbar på mobila enheter (fungerar någorlunda på iPad men mindre än så går ej) vilket förhoppningsvis blir nästa del att fixa.</p>
+				</div>
+            </div>
+        </section>
+		<div id="lastUpdated">Senast uppdaterad {{lastUpdated}}</div>
+	</div>
+{{>footer}}
