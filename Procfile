@@ -1,0 +1,1 @@
+web: node ./Shorthand.VKMinus.Node/app.js 
