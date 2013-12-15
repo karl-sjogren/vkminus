@@ -1,3 +1,0 @@
-﻿# Shorthand.VKMinus.Node
-
-
