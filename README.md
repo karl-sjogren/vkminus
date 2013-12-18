@@ -12,3 +12,6 @@ To get it working properly, you need a mongodb-database running somewhere and a 
     </root>
 
 It isn't available at Github because I'm lazy and honestly don't think that anyone else will be intressted in this project.
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/karl-sjogren/vkminus/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
